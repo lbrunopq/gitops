@@ -8,4 +8,4 @@ resources:
 images:
 - name: goserver
   newName: lbrunoq/gitops
-  newTag: 0324ad5feb8562ae1b1f752bc3fa095a90c77e96
+  newTag: 9bc244aa3ba8a4165f70d1e7c3ef027546ba9bf4
