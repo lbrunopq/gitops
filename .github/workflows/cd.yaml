@@ -56,7 +56,7 @@ jobs:
         uses: azure/aks-set-context@v3
         with:
           resource-group: 'goserver_group'
-          cluster-name: 'goserver'
+          cluster-name: 'goapi'
           # resource-group: '${{ secrets.resource_group }}'
           # cluster-name: '${{ secrets.cluster_name }}'
 
