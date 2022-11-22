@@ -1,5 +1,5 @@
 FROM golang:1.15
-WORKDIR /app
-COPY . .
+WORKDIR /go/src/k8s
+COPY ./src .
 RUN GOOS=linux go build -ldflags="-s -w"
-CMD ["./app"]
+CMD ["./k8s"]
