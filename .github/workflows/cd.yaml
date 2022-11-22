@@ -70,8 +70,8 @@ jobs:
         with:
           namespace: 'default'
           manifests: |
-            deployment.yaml
-            kustomization.yaml
-            service.yaml
+            k8s/deployment.yaml
+            k8s/kustomization.yaml
+            k8s/service.yaml
           images: '$DOCKER_USERNAME/gitops:$GITHUB_SHA'
           pull: false
