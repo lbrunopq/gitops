@@ -30,3 +30,4 @@ saída:
   "managementEndpointUrl": "https://management.core.windows.net/"
 }
 ```
+
