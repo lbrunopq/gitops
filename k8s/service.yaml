@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: goserver-service
 spec:
+  type: LoadBalancer
   selector:
     app: goserver
   ports:
