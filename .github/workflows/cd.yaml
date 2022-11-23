@@ -13,13 +13,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Bump version and push tag
+        id: tagging
+        uses: mathieudutour/github-tag-action@v4.5
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Build and push image to Dockerhub
         uses: docker/build-push-action@v1.1.0
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: ${{ secrets.DOCKER_USERNAME }}/gitops
-          tags: ${{ github.sha }}, latest
+          tags: ${{ github.sha }}, ${{ steps.tagging.outputs.new_version }}, latest
 
       - name: Setup Kustomize
         uses: imranismail/setup-kustomize@v1

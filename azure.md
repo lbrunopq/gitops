@@ -10,7 +10,7 @@ az ad sp create-for-rbac \
 ### Exemplo
 ```
 az ad sp create-for-rbac \
-    --name "goserver" \
+    --name "k8s-goserver" \
     --scope /subscriptions/a3cc3bc8-4d7b-4d40-8684-7825b6f8ee9d/resourceGroups/goserv_group \
     --role Contributor \
     --sdk-auth
@@ -19,7 +19,7 @@ az ad sp create-for-rbac \
 1 - saída:
 {
   "clientId": "7204ed46-0802-4ed2-b54b-f59cc6e61235",
-  "clientSecret": "JxX8Q~FToTjHX7p3F6a3vpM1FbfjrbcClAaRycT1",
+  "clientSecret": "iqi8Q~yPWs7V23~G6pgbBjVM7HSMoQCn3L3HxaUC",
   "subscriptionId": "a3cc3bc8-4d7b-4d40-8684-7825b6f8ee9d",
   "tenantId": "88b40e93-9291-4105-87e6-5cca5456da75",
   "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
