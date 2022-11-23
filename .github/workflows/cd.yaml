@@ -85,5 +85,5 @@ jobs:
           manifests: |
             k8s/deployment.yaml
             k8s/service.yaml
-          images: '$DOCKER_USERNAME/gitops:$GITHUB_SHA'
-          pull: false
+          # images: '$DOCKER_USERNAME/gitops:$GITHUB_SHA'
+          # pull: false

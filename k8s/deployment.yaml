@@ -10,9 +10,9 @@ spec:
     metadata:
       labels:
         app: goserver
-    spec:
-      containers:
+    # spec:
+    containers:
       - name: goserver
-        image: goserver
+        image: lbrunoq/gitops:latest
         ports:
         - containerPort: 3000
