@@ -4,6 +4,7 @@ metadata:
   name: goserver
 spec:
   selector:
+    replicas: 2
     matchLabels:
       app: goserver
   template:
@@ -12,11 +13,11 @@ spec:
         app: goserver
     spec:
       containers:
-      - name: goserver
-        image: lbrunoq/gitops:latest
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
-        ports:
-        - containerPort: 3000
+        - name: goserver
+          image: lbrunoq/gitops:latest
+          resources:
+            limits:
+              memory: '128Mi'
+              cpu: '500m'
+          ports:
+            - containerPort: 3000

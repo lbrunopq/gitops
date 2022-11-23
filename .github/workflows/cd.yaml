@@ -86,5 +86,3 @@ jobs:
             k8s/deployment.yaml
             k8s/service.yaml
           images: '${{ secrets.DOCKER_USERNAME }}/gitops:${{ github.sha }}'
-          # images: '$DOCKER_USERNAME/gitops:$GITHUB_SHA'
-          # pull: false
