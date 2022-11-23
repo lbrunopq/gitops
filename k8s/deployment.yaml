@@ -4,9 +4,9 @@ metadata:
   name: goserver
 spec:
   selector:
-    replicas: 2
     matchLabels:
       app: goserver
+  replicas: 2
   template:
     metadata:
       labels:
