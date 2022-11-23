@@ -13,6 +13,6 @@ spec:
     spec:
       containers:
       - name: goserver
-        images: goserver
+        image: goserver
         ports:
         - containerPort: 3000
