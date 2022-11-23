@@ -44,3 +44,4 @@ az ad sp create-for-rbac \
   "managementEndpointUrl": "https://management.core.windows.net/"
 }
 ```
+
