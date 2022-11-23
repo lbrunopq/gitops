@@ -10,9 +10,13 @@ spec:
     metadata:
       labels:
         app: goserver
-    # spec:
-    containers:
+    spec:
+      containers:
       - name: goserver
         image: lbrunoq/gitops:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
         ports:
         - containerPort: 3000
