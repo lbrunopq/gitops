@@ -14,10 +14,17 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Bump version and push tag
-        id: tagging
+        id: tag_version
         uses: mathieudutour/github-tag-action@v4.5
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create a GitHub release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.tag_version.outputs.new_tag }}
+          name: Release ${{ steps.tag_version.outputs.new_tag }}
+          body: ${{ steps.tag_version.outputs.changelog }}
 
       - name: Build and push image to Dockerhub
         uses: docker/build-push-action@v1.1.0
@@ -25,7 +32,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: ${{ secrets.DOCKER_USERNAME }}/gitops
-          tags: ${{ github.sha }}, ${{ steps.tagging.outputs.new_version }}, latest
+          tags: ${{ github.sha }}, ${{ steps.tag_version.outputs.new_tag }}, latest
 
       - name: Setup Kustomize
         uses: imranismail/setup-kustomize@v1
@@ -37,7 +44,7 @@ jobs:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         run: |
           cd k8s
-          kustomize edit set image goserver=$DOCKER_USERNAME/gitops:$GITHUB_SHA
+          kustomize edit set images goserver=$DOCKER_USERNAME/gitops:$GITHUB_SHA
 
       - name: Commit
         run: |
@@ -79,7 +86,7 @@ jobs:
             k8s/deployment.yaml
             k8s/service.yaml
           # images: '$DOCKER_USERNAME/gitops:$GITHUB_SHA'
-          images: lbrunoq/gitops:latest
+          # images: lbrunoq/gitops:latest
           # images: |
           #   ${{ secrets.DOCKER_USERNAME }}/gitops:${{ github.sha }}
-          # pull: true
+          # pull: false
